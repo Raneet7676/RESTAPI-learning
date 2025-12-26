@@ -8,8 +8,8 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+//@AllArgsConstructor
+//@NoArgsConstructor
 @Table(
         name = "User_detail"
 )
@@ -17,6 +17,19 @@ public class UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+
+    public UserDetails() {
+    }
+
+    public UserDetails(long id, String firstName, String lastName, String email, String occupation, String location, String city) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.occupation = occupation;
+        Location = location;
+        this.city = city;
+    }
 
     public UserDetails(String firstName, String lastName, String email, String occupation, String location, String city) {
         this.firstName = firstName;
