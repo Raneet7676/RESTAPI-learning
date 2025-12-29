@@ -1,30 +1,24 @@
 package com.example.RESTAPI.DTO.response;
 
+import lombok.Getter;
+import lombok.Setter;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
-@Data
-@NoArgsConstructor
+@Setter
+@Getter
 public class AllUserDetails {
 
-
-    public AllUserDetails(String firstName, String lastName, String email, String occupation, String location, String city) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.occupation = occupation;
-        Location = location;
-        this.city = city;
-    }
-
-
+    // getters and setters (REQUIRED)
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
-    private String occupation;
-    private String Location;
     private String city;
+    private String location;
+    private String occupation;
+
+    // ✅ THIS MUST EXIST
+    public AllUserDetails() {
+    }
 
 }
+
