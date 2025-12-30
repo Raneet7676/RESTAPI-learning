@@ -1,6 +1,7 @@
 package com.example.RESTAPI.service;
 
 
+import com.example.RESTAPI.DTO.request.InputUserDetails;
 import com.example.RESTAPI.DTO.response.AllUserDetails;
 import com.example.RESTAPI.entity.UserDetails;
 import com.example.RESTAPI.repository.UserRepository;
@@ -51,6 +52,12 @@ public class UserService {
                 .stream()
                 .map(user -> mapper.map(user, AllUserDetails.class))
                 .collect(Collectors.toList());
+    }
+
+    public void addDetails(InputUserDetails inputDetails){
+        UserDetails detail = mapper.map(inputDetails, UserDetails.class);
+
+        userRepository.save(detail);
     }
 
 }

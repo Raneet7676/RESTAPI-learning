@@ -1,17 +1,14 @@
 package com.example.RESTAPI.controller;
 
+import com.example.RESTAPI.DTO.request.InputUserDetails;
 import com.example.RESTAPI.DTO.response.AllUserDetails;
 import com.example.RESTAPI.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
-
-
 
 @RestController
 @RequestMapping("/users")
@@ -27,6 +24,13 @@ public class UserDetailsController {
         List<AllUserDetails> userDetails = userService.fetchDetails();
         return ResponseEntity.ok(userDetails);
 
+    }
+
+    @PostMapping("/add-details")
+    public ResponseEntity<String> createUserDetail(@RequestBody InputUserDetails inputDetails){
+
+        userService.addDetails(inputDetails);
+        return new ResponseEntity<>("user detail added",HttpStatus.CREATED);
     }
 
 
